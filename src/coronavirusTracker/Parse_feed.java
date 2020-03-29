@@ -26,6 +26,7 @@ public class Parse_feed {
 	private static int numberOfCountries;
 	private static LinkedList<Location_stats> locationList = new LinkedList<Location_stats>();
 	public static String latestDate;
+
 	
 	public Parse_feed() {
 		
@@ -33,7 +34,7 @@ public class Parse_feed {
 	
 	public static void readFile() throws IOException, InterruptedException
 	{
-		URL url = new URL("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv");
+		URL url = new URL("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv");
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
 		con.setRequestMethod("GET");
 		
@@ -113,6 +114,7 @@ public class Parse_feed {
 				point.putProperty("Title", locTitle);
 				int numOfCases=locationList.get(i).getCases();
 				point.putProperty("Confirmed Cases", numOfCases);
+				point.putProperty("isCountry", true);
 			}
 			else
 			{
@@ -120,6 +122,7 @@ public class Parse_feed {
 		    	point.putProperty("Title", locTitle);
 		    	int numOfCases=locationList.get(i).getCases();
 		    	point.putProperty("Confirmed Cases", numOfCases);
+		    	point.putProperty("isCountry", false);
 			}
 	    }
 		return features;
@@ -129,6 +132,7 @@ public class Parse_feed {
 	{
 		return latestDate;
 	}
+
 	
 	
 	public static void main(String[] args) throws IOException, InterruptedException {
