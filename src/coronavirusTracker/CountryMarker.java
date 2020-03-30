@@ -20,57 +20,66 @@ public class CountryMarker extends CommonMarker {
 	public void drawMarker(PGraphics pg, float x, float y) {
 		// Save previous drawing style
 		pg.pushStyle();
-		float newX = x - (float) 20.0 /(float) 2.0;
-	    float newY = y - (float) 20.0 /(float) 2.0;
 		pg.fill(255, 0, 0, 63);
 		
 		 if(getCases()<=0)
 			{
-		    	pg.ellipse(newX, newY, 0, 0);
+		    	pg.ellipse(x, y, 0, 0);
 			}
 			else if(getCases()>0 && getCases()<11)
 			{
-				pg.ellipse(newX, newY, 5/2, 5/2);
+				int width=5/2;
+				pg.ellipse(x, y, width, width);
 			}
 			else if (getCases()>10 && getCases()<51)
 			{
-				pg.ellipse(newX, newY, 10/2, 10/2);
+				int width=10/2;
+				pg.ellipse(x, y, width, width);
 			}
 			else if (getCases()>50 && getCases()<201)
 			{
-				pg.ellipse(newX, newY, 15/2, 15/2);
+				int width=15/2;
+				pg.ellipse(x, y, width, width);
 			}
 			else if(getCases()>200 && getCases()<401)
 			{
-				pg.ellipse(newX, newY, 20/2, 20/2);
+				int width=20/2;
+				pg.ellipse(x, y, width, width);
 			}
 			else if(getCases()>400 && getCases()<801)
 			{
-				pg.ellipse(newX, newY, 25/2, 25/2);
+				int width=25/2;
+				pg.ellipse(x, y, width, width);
 			}
 			else if(getCases()>800 && getCases()<1601)
 			{
-				pg.ellipse(newX, newY, 30/2, 30/2);
+				int width=30/2;
+				pg.ellipse(x, y, width, width);
 			}
 			else if(getCases()>1600 && getCases()<3001)
 			{
-				pg.ellipse(newX, newY, 35/2, 35/2);
+				int width=35/2;
+				pg.ellipse(x, y, width, width);
 			}
 			else if(getCases()>3000 && getCases()<17001)
 			{
-				pg.ellipse(newX, newY, 40/2, 40/2);
+				int width=40/2;
+				pg.ellipse(x, y, width, width);
 			}
 			else if(getCases()>17000 && getCases()<50001)
 			{
-				pg.ellipse(newX, newY, 45/2, 45/2);
+				int width=45/2;
+				pg.ellipse(x, y, width, width);
 			}
 			else if(getCases()>50000 && getCases()<100001)
 			{
-				pg.ellipse(newX, newY, 50/2, 50/2);
+				int width=50/2;
+				pg.ellipse(x, y, width, width);
 			}
 			else
 			{
-				pg.ellipse(newX, newY, 55/2, 55/2);
+				int width=55/2;
+				pg.ellipse(x, y, width, width);
 			}
 		
 		// Restore previous drawing style
@@ -89,11 +98,11 @@ public class CountryMarker extends CommonMarker {
 	
 	@Override
 	public void showTitle(PGraphics pg, float x, float y) {
-		String title=(String)(getCountry()+": "+Math.round(getCases())+" cases");
+		String title=(String)(" "+getCountry()+": "+Math.round(getCases())+" cases"+" ");
 		float textWidth=pg.textWidth(title);
 		pg.fill(255, 255, 204);
-		pg.rect(x,y-15,textWidth, 15);
+		pg.rect(x+15,y-15,textWidth, 20);
 		pg.fill(0, 0, 0);
-		pg.text(title, x, y);
+		pg.text(title, x+15, y);
 	}
 }
