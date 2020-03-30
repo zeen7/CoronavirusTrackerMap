@@ -33,7 +33,7 @@ public class CoronavirusMap extends PApplet {
 	
 	public void setup() {
 		size((int)screenSize.getWidth(), (int)screenSize.getHeight(), OPENGL);
-		map = new UnfoldingMap(this, 200, 50, (int)screenSize.getWidth()-250, (int)screenSize.getHeight()-100, new Microsoft.RoadProvider());
+		map = new UnfoldingMap(this, 150, 50, (int)screenSize.getWidth()-250, (int)screenSize.getHeight()-100, new Microsoft.RoadProvider());
 		map.setBackgroundColor(255);
 	    map.zoomToLevel(3);
 	    MapUtils.createDefaultEventDispatcher(this, map);	
@@ -76,7 +76,7 @@ public class CoronavirusMap extends PApplet {
 	}
 	
 	public void draw() {
-	    background(10);
+	    background(224, 224, 224);
 	    map.draw();
 	    addKey();	
 	}
@@ -84,21 +84,18 @@ public class CoronavirusMap extends PApplet {
 	private void addKey() 
 	{	
 		textSize(18);
+		fill(0,0,0);
 		text(Parse_feed.getDate(), (int)screenSize.getWidth()/2, 30);
 		text("COVID-19 Tracker Map", 15, 30);
 		textSize(12);
-		fill(0, 0, 255);
-		ellipse(20, 95, 10, 10);
-		fill(255, 255, 255);
-		text("Below 4.0 Magnitude", 40, 100);
-		fill(255, 255, 0);
-		ellipse(20, 145, 15, 15);
-		fill(255, 255, 255);
-		text("4.0-4.9 Magnitude", 40, 150);
-		fill(255, 0, 0);
-		ellipse(20, 195, 20, 20);
-		fill(255, 255, 255);
-		text("Above 5.0 Magnitude", 40, 200);
+		fill(255, 0, 0, 63);
+		ellipse(20, 95, 20, 20);
+		fill(0, 0, 0);
+		text("Country", 40, 100);
+		fill(255, 0, 0, 63);
+		rect(20-10, 145-10, 20, 20);
+		fill(0, 0, 0);
+		text("Province/State", 40, 150);
 	}
 	
 	@Override
