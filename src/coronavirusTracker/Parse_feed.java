@@ -108,7 +108,7 @@ public class Parse_feed {
 	    
 			point = new PointFeature(coordinates);
 			features.add(point);
-			if(locationList.get(i).getProvince().equals("")!=true)
+			if(locationList.get(i).getProvince().equals(""))
 			{
 				String locTitle=locationList.get(i).getCountry();
 				point.putProperty("Title", locTitle);

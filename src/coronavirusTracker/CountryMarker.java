@@ -6,7 +6,7 @@ import de.fhpotsdam.unfolding.geo.Location;
 import de.fhpotsdam.unfolding.marker.SimplePointMarker;
 import processing.core.PGraphics;
 
-public class CountryMarker extends SimplePointMarker {
+public class CountryMarker extends CommonMarker {
 
 	public CountryMarker(Location location) {
 		super(location);
@@ -16,8 +16,8 @@ public class CountryMarker extends SimplePointMarker {
 	public CountryMarker(Feature city) {
 		super(((PointFeature)city).getLocation(), city.getProperties());
 	}
-	
-	public void draw(PGraphics pg, float x, float y) {
+	@Override
+	public void drawMarker(PGraphics pg, float x, float y) {
 		// Save previous drawing style
 		pg.pushStyle();
 		float newX = x - (float) 20.0 /(float) 2.0;
@@ -85,5 +85,15 @@ public class CountryMarker extends SimplePointMarker {
 	public float getCases()
 	{
 		return Float.parseFloat((getProperty("Confirmed Cases")).toString());
+	}
+	
+	@Override
+	public void showTitle(PGraphics pg, float x, float y) {
+		String title=(String)(getCountry()+": "+Math.round(getCases())+" cases");
+		float textWidth=pg.textWidth(title);
+		pg.fill(255, 255, 204);
+		pg.rect(x,y-15,textWidth, 15);
+		pg.fill(0, 0, 0);
+		pg.text(title, x, y);
 	}
 }

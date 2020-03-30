@@ -55,12 +55,12 @@ public class CoronavirusMap extends PApplet {
 	    	markers.add(createMarker(x));
 	    	if(x.getProperty("isCountry").equals(true))
 	    	{
-	    		provinceMarkers.add(new CityMarker(x));
+	    		countryMarkers.add(new CountryMarker(x));
 	    		//provinceMarkers.add(new CityMarker(markers.get(counter).getLocation()));
 	    	}
 	    	else
 	    	{
-	    		countryMarkers.add(new CountryMarker(x));
+	    		provinceMarkers.add(new CityMarker(x));
 	    		//countryMarkers.add(new CountryMarker(markers.get(counter).getLocation()));
 	    	}
 	    }
@@ -72,59 +72,6 @@ public class CoronavirusMap extends PApplet {
 	{
 		// Create a new SimplePointMarker at the location given by the PointFeature
 		SimplePointMarker marker = new SimplePointMarker(feature.getLocation());
-		Object cases = feature.getProperty("Confirmed Cases");
-		float numOfCases = Float.parseFloat(cases.toString());
-		
-		int red = color(255, 0 ,0, 63);
-		marker.setColor(red);
-		if(numOfCases<=0)
-		{
-			marker.setRadius(0);
-		}
-		else if(numOfCases>0 && numOfCases<11)
-		{
-			marker.setRadius(5);
-		}
-		else if (numOfCases>10 && numOfCases<51)
-		{
-			marker.setRadius(10);
-		}
-		else if (numOfCases>50 && numOfCases<201)
-		{
-			marker.setRadius(15);
-		}
-		else if(numOfCases>200 && numOfCases<401)
-		{
-			marker.setRadius(20);
-		}
-		else if(numOfCases>400 && numOfCases<801)
-		{
-			marker.setRadius(25);
-		}
-		else if(numOfCases>800 && numOfCases<1601)
-		{
-			marker.setRadius(35);
-		}
-		else if(numOfCases>1600 && numOfCases<3001)
-		{
-			marker.setRadius(40);
-		}
-		else if(numOfCases>3000 && numOfCases<17001)
-		{
-			marker.setRadius(50);
-		}
-		else if(numOfCases>17000 && numOfCases<50001)
-		{
-			marker.setRadius(55);
-		}
-		else if(numOfCases>50000 && numOfCases<100001)
-		{
-			marker.setRadius(60);
-		}
-		else
-		{
-			marker.setRadius(65);
-		}
 		return marker;
 	}
 	
@@ -162,7 +109,8 @@ public class CoronavirusMap extends PApplet {
 			lastSelected.setSelected(false);
 			lastSelected = null;
 		}
-		selectMarkerIfHover(markers);
+		selectMarkerIfHover(provinceMarkers);
+		selectMarkerIfHover(countryMarkers);
 	}
 
 	private void selectMarkerIfHover(List<Marker> markers)
@@ -177,10 +125,6 @@ public class CoronavirusMap extends PApplet {
 			}
 		}
 	}
-	public void showTitle(float x, float y, Marker m)
-	{
-			fill(0,0,0);
-			text((String)m.getProperty("Confirmed Cases"), x, y);
-	}
+	
 
 }
