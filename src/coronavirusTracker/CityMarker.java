@@ -1,14 +1,15 @@
+/* 
+ * Square markers for smaller areas of land such as cities, provinces and states
+ */
 package coronavirusTracker;
 
 import de.fhpotsdam.unfolding.data.Feature;
 import de.fhpotsdam.unfolding.data.PointFeature;
 import de.fhpotsdam.unfolding.geo.Location;
-import de.fhpotsdam.unfolding.marker.SimplePointMarker;
 import processing.core.PGraphics;
-import processing.core.PApplet;
-
 
 public class CityMarker extends CommonMarker {
+	
 	public CityMarker(Location location) {
 		super(location);
 	}
@@ -22,7 +23,10 @@ public class CityMarker extends CommonMarker {
 		// Save previous drawing style
 		pg.pushStyle();
 		
+		//transparent red color for markers
 		pg.fill(255, 0, 0, 63);
+		
+		//Scaling for square cityMarkers
 	    if(getCases()<=0)
 		{
 	    	pg.rect(x, y, 0, 0);
@@ -97,18 +101,13 @@ public class CityMarker extends CommonMarker {
 		return Float.parseFloat((getProperty("Confirmed Cases")).toString());
 	}
 
-
 	@Override
 	public void showTitle(PGraphics pg, float x, float y) {
-		
 		String title=(String)(" "+getCountry()+": "+Math.round(getCases())+" cases"+" ");
 		float textWidth=pg.textWidth(title);
 		pg.fill(255, 255, 204);
 		pg.rect(x+15,y-15,textWidth, 20);
 		pg.fill(0, 0, 0);
 		pg.text(title, x+15, y);
-		
 	}
-	
-	
 }

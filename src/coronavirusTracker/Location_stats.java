@@ -1,12 +1,9 @@
+/*
+ * Saves data in more organized format
+ */
 package coronavirusTracker;
 
-import coronavirusTracker.Parse_feed;
-
 public class Location_stats {
-
-	public Location_stats() {
-		// TODO Auto-generated constructor stub
-	}
 	private String province;
 	private String country;
 	private int cases;
@@ -63,6 +60,4 @@ public class Location_stats {
 				", Total Cases=" + cases +
 				'}';
 	}	
-	
-	
 }

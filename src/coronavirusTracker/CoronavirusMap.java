@@ -1,17 +1,17 @@
+/*
+ * Main map UI and map interactions
+ */
 package coronavirusTracker;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.LinkedList;
-//import java.util.Collections;
-//import java.util.Comparator;
 import java.util.List;
 
 //Processing library
 import processing.core.PApplet;
-import processing.core.PGraphics;
+
 //Unfolding libraries
 import de.fhpotsdam.unfolding.UnfoldingMap;
 import de.fhpotsdam.unfolding.marker.Marker;
@@ -20,8 +20,12 @@ import de.fhpotsdam.unfolding.marker.SimplePointMarker;
 import de.fhpotsdam.unfolding.providers.Microsoft;
 import de.fhpotsdam.unfolding.utils.MapUtils;
 
-
 public class CoronavirusMap extends PApplet {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	// The map
 	private UnfoldingMap map;
@@ -56,12 +60,10 @@ public class CoronavirusMap extends PApplet {
 	    	if(x.getProperty("isCountry").equals(true))
 	    	{
 	    		countryMarkers.add(new CountryMarker(x));
-	    		//provinceMarkers.add(new CityMarker(markers.get(counter).getLocation()));
 	    	}
 	    	else
 	    	{
 	    		provinceMarkers.add(new CityMarker(x));
-	    		//countryMarkers.add(new CountryMarker(markers.get(counter).getLocation()));
 	    	}
 	    }
 	    map.addMarkers(countryMarkers);
@@ -75,6 +77,7 @@ public class CoronavirusMap extends PApplet {
 		return marker;
 	}
 	
+	//Constantly updates drawing the map
 	public void draw() {
 	    background(224, 224, 224);
 	    map.draw();
@@ -112,7 +115,6 @@ public class CoronavirusMap extends PApplet {
 
 	private void selectMarkerIfHover(List<Marker> markers)
 	{
-		// TODO: Implement this method
 		for(Marker m: markers)
 		{
 			if(m.isInside(map, (float)mouseX, (float)mouseY)==true && lastSelected==null)
@@ -122,6 +124,4 @@ public class CoronavirusMap extends PApplet {
 			}
 		}
 	}
-	
-
 }
