@@ -1,6 +1,6 @@
 # Coronavirus Tracker Map
 ## About
-A interactable map that shows the number of coronavirus cases currently around the world. Uses the UnfoldingMaps library and runs on Java 8.
+An interactable map that shows the number of coronavirus cases currently around the world. Uses the UnfoldingMaps library and runs on Java 8.
 
 ## Features
 - Updates with the latest number of coronavirus cases every day around world
