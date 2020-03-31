@@ -10,7 +10,7 @@ An interactable map that shows the number of coronavirus cases currently around 
 - Zoom in and zoom out of areas using your mouse zoom wheel 
 
 [![](https://i.imgur.com/s8ICRHI.jpg)]()
-## Square Province/State Markers 
+## Province/State Markers 
 [![](https://i.imgur.com/dRGHsw8.jpg)]()
 ## Country Markers
 [![](https://i.imgur.com/ENYA2Li.jpg)]()
