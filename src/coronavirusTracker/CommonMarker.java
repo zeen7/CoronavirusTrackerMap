@@ -1,3 +1,6 @@
+/*
+ * Abstract Common Marker class that inherits SimplePointMarker class of the UnfoldingMaps library. Also CityMarker's and CountryMarker's parent class.
+ */
 package coronavirusTracker;
 
 import de.fhpotsdam.unfolding.geo.Location;

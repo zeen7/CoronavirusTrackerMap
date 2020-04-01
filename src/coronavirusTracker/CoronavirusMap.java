@@ -84,6 +84,7 @@ public class CoronavirusMap extends PApplet {
 	    addKey();	
 	}
 	
+	//Map legend
 	private void addKey() 
 	{	
 		textSize(18);
@@ -112,7 +113,7 @@ public class CoronavirusMap extends PApplet {
 		selectMarkerIfHover(provinceMarkers);
 		selectMarkerIfHover(countryMarkers);
 	}
-
+	
 	private void selectMarkerIfHover(List<Marker> markers)
 	{
 		for(Marker m: markers)

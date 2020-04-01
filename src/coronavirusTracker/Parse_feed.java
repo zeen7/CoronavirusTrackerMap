@@ -69,6 +69,7 @@ public class Parse_feed {
 		}
 	}
 	
+	//Adds properties for your each country to a list of PointFeatures so they can be added on the map as markers in CoronavirusMap
 	public static List<PointFeature> locationFeatures() {
 		List<PointFeature> features = new ArrayList<PointFeature>();
 		PointFeature point;
