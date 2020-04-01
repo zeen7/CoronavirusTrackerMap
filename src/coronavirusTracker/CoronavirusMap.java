@@ -11,7 +11,6 @@ import java.util.List;
 
 //Processing library
 import processing.core.PApplet;
-
 //Unfolding libraries
 import de.fhpotsdam.unfolding.UnfoldingMap;
 import de.fhpotsdam.unfolding.marker.Marker;
@@ -100,6 +99,8 @@ public class CoronavirusMap extends PApplet {
 		rect(20-10, 145-10, 20, 20);
 		fill(0, 0, 0);
 		text("Province/State", 40, 150);
+		textSize(12);
+		text("Total Global Cases:\n"+Integer.toString(Parse_feed.getTotalCases()), 10, 200);
 	}
 	
 	@Override

@@ -17,6 +17,7 @@ public class Parse_feed {
 	private static int numberOfCountries;
 	private static LinkedList<Location_stats> locationList = new LinkedList<Location_stats>();
 	public static String latestDate;
+	private static int totalCases;
 	
 	public static void readFile() throws IOException, InterruptedException
 	{
@@ -79,6 +80,7 @@ public class Parse_feed {
 	    
 			point = new PointFeature(coordinates);
 			features.add(point);
+			//is a country
 			if(locationList.get(i).getProvince().equals(""))
 			{
 				String locTitle=locationList.get(i).getCountry();
@@ -86,7 +88,9 @@ public class Parse_feed {
 				int numOfCases=locationList.get(i).getCases();
 				point.putProperty("Confirmed Cases", numOfCases);
 				point.putProperty("isCountry", true);
+				totalCases+=numOfCases;
 			}
+			//is a state/province
 			else
 			{
 				String locTitle=locationList.get(i).getProvince()+", "+locationList.get(i).getCountry();
@@ -102,6 +106,10 @@ public class Parse_feed {
 	public static String getDate()
 	{
 		return latestDate;
+	}
+	public static int getTotalCases()
+	{
+		return totalCases;
 	}
 
 	public static void main(String[] args) throws IOException, InterruptedException {
