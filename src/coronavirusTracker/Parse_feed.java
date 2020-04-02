@@ -98,6 +98,7 @@ public class Parse_feed {
 		    	int numOfCases=locationList.get(i).getCases();
 		    	point.putProperty("Confirmed Cases", numOfCases);
 		    	point.putProperty("isCountry", false);
+		    	totalCases+=numOfCases;
 			}
 	    }
 		return features;
