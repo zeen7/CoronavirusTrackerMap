@@ -21,9 +21,6 @@ import de.fhpotsdam.unfolding.utils.MapUtils;
 
 public class CoronavirusMap extends PApplet {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	// The map
@@ -33,13 +30,14 @@ public class CoronavirusMap extends PApplet {
 	private List<Marker> markers;
 	private List<Marker> provinceMarkers;
 	private List<Marker> countryMarkers;
+	private String [] topCases;
 	
 	public void setup() {
 		size((int)screenSize.getWidth(), (int)screenSize.getHeight(), OPENGL);
 		map = new UnfoldingMap(this, 150, 50, (int)screenSize.getWidth()-250, (int)screenSize.getHeight()-100, new Microsoft.RoadProvider());
 		map.setBackgroundColor(255);
 	    map.zoomToLevel(3);
-	    MapUtils.createDefaultEventDispatcher(this, map);	
+	    MapUtils.createDefaultEventDispatcher(this, map);
 	    
 	    markers = new LinkedList<Marker>();
 	    
@@ -67,6 +65,7 @@ public class CoronavirusMap extends PApplet {
 	    }
 	    map.addMarkers(countryMarkers);
 	    map.addMarkers(provinceMarkers);
+	    topCases=top5Cases();
 	}
 	
 	private SimplePointMarker createMarker(PointFeature feature)
@@ -100,7 +99,43 @@ public class CoronavirusMap extends PApplet {
 		fill(0, 0, 0);
 		text("Province/State", 40, 150);
 		textSize(12);
-		text("Total Global Cases:\n"+Integer.toString(Parse_feed.getTotalCases()), 10, 200);
+		text("Total Global Cases:\n"+Integer.toString(Parse_feed.getTotalCases()), 10, 250);
+		text("Top 5 Most Cases:", 10, 340);
+		text(topCases[0]+":", 10, 360);
+		text(topCases[1]+":", 10, 380);
+		text(topCases[2]+":", 10, 400);
+		text(topCases[3]+":", 10, 420);
+		text(topCases[4]+":", 10, 440);
+	}
+	
+	//method that gets the top 5 cases through merge sort
+	private String [] top5Cases()
+	{
+		int arr[] = Parse_feed.getTopCases();
+        int arrLength = arr.length; 
+        String [] topCasesTitles=Parse_feed.getTopCasesTitle();
+        int [] sortedPositions=new int [arrLength];
+         
+        for(int j=0; j<arr.length; j++)
+        {
+        	sortedPositions[j]=mergeSort.getIndexInSortedArray(arr, arrLength, j); 
+        }
+        
+        mergeSort a= new mergeSort();
+        a.sort(arr);
+
+        String [] newTitle=new String [arrLength];
+        for(int i=0; i<arrLength; i++)
+        {
+        	newTitle[sortedPositions[i]]=topCasesTitles[i];
+        }
+        String [] top5=new String [5];
+        //gets top 5 most cases and their title
+        for(int i=arr.length-1; i>arr.length-6 ;i--)
+        {
+        	top5[arr.length-1-i]=newTitle[i]+", "+Integer.toString(arr[i]);
+        }
+		return top5;
 	}
 	
 	@Override

@@ -18,6 +18,8 @@ public class Parse_feed {
 	private static LinkedList<Location_stats> locationList = new LinkedList<Location_stats>();
 	public static String latestDate;
 	private static int totalCases;
+	private static int [] topCases;
+	private static String [] topCasesTitles;
 	
 	public static void readFile() throws IOException, InterruptedException
 	{
@@ -74,31 +76,35 @@ public class Parse_feed {
 	public static List<PointFeature> locationFeatures() {
 		List<PointFeature> features = new ArrayList<PointFeature>();
 		PointFeature point;
+		topCases=new int[numberOfCountries];
+		topCasesTitles=new String[numberOfCountries];
 	    for(int i=0;i<numberOfCountries-1;i++)
 	    {
 	    	Location coordinates=new Location(Float.parseFloat(locationList.get(i).getLatitude()), Float.parseFloat(locationList.get(i).getLongitude()));
-	    
+	    	
 			point = new PointFeature(coordinates);
 			features.add(point);
+			
+			int numOfCases=locationList.get(i).getCases();
+			topCases[i]=numOfCases;
+			point.putProperty("Confirmed Cases", numOfCases);
+			totalCases+=numOfCases;
+			
 			//is a country
 			if(locationList.get(i).getProvince().equals(""))
 			{
 				String locTitle=locationList.get(i).getCountry();
+				topCasesTitles[i]=locTitle;
 				point.putProperty("Title", locTitle);
-				int numOfCases=locationList.get(i).getCases();
-				point.putProperty("Confirmed Cases", numOfCases);
 				point.putProperty("isCountry", true);
-				totalCases+=numOfCases;
 			}
 			//is a state/province
 			else
 			{
 				String locTitle=locationList.get(i).getProvince()+", "+locationList.get(i).getCountry();
+				topCasesTitles[i]=locTitle;
 		    	point.putProperty("Title", locTitle);
-		    	int numOfCases=locationList.get(i).getCases();
-		    	point.putProperty("Confirmed Cases", numOfCases);
 		    	point.putProperty("isCountry", false);
-		    	totalCases+=numOfCases;
 			}
 	    }
 		return features;
@@ -112,9 +118,20 @@ public class Parse_feed {
 	{
 		return totalCases;
 	}
+	
+	public static int [] getTopCases()
+	{
+		return topCases;
+	}
+	public static String [] getTopCasesTitle()
+	{
+		return topCasesTitles;
+	}
 
 	public static void main(String[] args) throws IOException, InterruptedException {
-		//readFile();
-		//locationFeatures();
+		readFile();
+		locationFeatures();
+		getTopCases();
+		
 	}
 }
