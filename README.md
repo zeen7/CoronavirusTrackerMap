@@ -8,12 +8,13 @@ An interactable map that shows the number of coronavirus cases currently around 
 - Markers change size depending on number of cases in the marker's area
 - Shows province/state cases as square markers and country cases as circle markers
 - Zoom in and zoom out of areas using your mouse zoom wheel 
+- Displays total global COVID-19 cases and top 5 places with the most cases
 
-[![](https://i.imgur.com/gE0Qsmk.jpg)]()
+[![](https://i.imgur.com/qUFPAtK.jpg)]()
 ## Province/State Markers 
-[![](https://i.imgur.com/dRGHsw8.jpg)]()
+[![](https://i.imgur.com/1mBq61L.jpg)]()
 ## Country Markers
-[![](https://i.imgur.com/ENYA2Li.jpg)]()
+[![](https://i.imgur.com/0BqRnfu.jpg)]()
 
 # Source
 <a href="https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv" target="_blank">Global Confirmed COVID-19 Cases</a> 
