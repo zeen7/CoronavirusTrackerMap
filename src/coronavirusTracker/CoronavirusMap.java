@@ -101,11 +101,11 @@ public class CoronavirusMap extends PApplet {
 		textSize(12);
 		text("Total Global Cases:\n"+Integer.toString(Parse_feed.getTotalCases()), 10, 250);
 		text("Top 5 Most Cases:", 10, 340);
-		text(topCases[0]+":", 10, 360);
-		text(topCases[1]+":", 10, 380);
-		text(topCases[2]+":", 10, 400);
-		text(topCases[3]+":", 10, 420);
-		text(topCases[4]+":", 10, 440);
+		text(topCases[0], 10, 360);
+		text(topCases[1], 10, 380);
+		text(topCases[2], 10, 400);
+		text(topCases[3], 10, 420);
+		text(topCases[4], 10, 440);
 	}
 	
 	//method that gets the top 5 cases through merge sort
@@ -133,7 +133,7 @@ public class CoronavirusMap extends PApplet {
         //gets top 5 most cases and their title
         for(int i=arr.length-1; i>arr.length-6 ;i--)
         {
-        	top5[arr.length-1-i]=newTitle[i]+", "+Integer.toString(arr[i]);
+        	top5[arr.length-1-i]=newTitle[i]+": "+Integer.toString(arr[i]);
         }
 		return top5;
 	}
