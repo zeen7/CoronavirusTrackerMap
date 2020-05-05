@@ -17,9 +17,9 @@ An interactable map that shows the number of coronavirus cases currently around 
 [![](https://i.imgur.com/0BqRnfu.jpg)]()
 
 ## Data Set Source
-<a href="https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv" target="_blank">Global Confirmed COVID-19 Cases</a> 
+- <a href="https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv" target="_blank">Global Confirmed COVID-19 Cases</a> 
 
 ## Technologies Used
-<a href="https://processing.org/" target="_blank">Processing</a> 
-<a href="http://unfoldingmaps.org/" target="_blank">Unfolding Maps</a> 
-<a href="https://java.com/en/download/manual.jsp" target="_blank">Java version 8</a> 
+- <a href="https://processing.org/" target="_blank">Processing</a> 
+- <a href="http://unfoldingmaps.org/" target="_blank">Unfolding Maps</a> 
+- <a href="https://java.com/en/download/manual.jsp" target="_blank">Java version 8</a> 
