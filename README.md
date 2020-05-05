@@ -1,7 +1,7 @@
 # Coronavirus Tracker Map
 [![](https://i.imgur.com/S89LlgG.jpg)]()
 ## About
-An interactable map that shows the number of coronavirus cases currently around the world. This program uses the Processing and the UnfoldingMaps library and runs on Java 8.
+An interactable map that shows the number of coronavirus cases currently around the world. This program uses the Processing and the UnfoldingMaps library and runs on Java version 8.
 
 ## Features
 - Updates with the latest number of coronavirus cases every day around world
@@ -18,3 +18,8 @@ An interactable map that shows the number of coronavirus cases currently around 
 
 ## Data Set Source
 <a href="https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv" target="_blank">Global Confirmed COVID-19 Cases</a> 
+
+## Technologies Used
+<a href="https://processing.org/" target="_blank">Processing</a> 
+<a href="http://unfoldingmaps.org/" target="_blank">Unfolding Maps</a> 
+<a href="https://java.com/en/download/manual.jsp" target="_blank">Java version 8</a> 
