@@ -10,7 +10,7 @@ An interactable map that shows the number of coronavirus cases currently around 
 - Zoom in and zoom out of areas using your mouse zoom wheel 
 - Displays total global COVID-19 cases and top 5 places with the most cases
 
-[![](https://i.imgur.com/qUFPAtK.jpg)]()
+[![](https://i.imgur.com/S89LlgG.jpg)]()
 ## Province/State Markers 
 [![](https://i.imgur.com/1mBq61L.jpg)]()
 ## Country Markers
