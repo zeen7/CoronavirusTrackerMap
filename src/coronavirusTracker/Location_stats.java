@@ -11,7 +11,7 @@ public class Location_stats {
 	private String longitude;
 
 	public void setProvince(String province) {
-		this.province=province;
+		this.province = province;
 	}
 	
 	public String getProvince() {
@@ -19,14 +19,14 @@ public class Location_stats {
 	}
 	
 	public void setLatitude(String latitude) {
-		this.latitude=latitude;
+		this.latitude = latitude;
 	}
 	public String getLatitude() {
 		return latitude;
 	}
 	
 	public void setLongitude(String longitude) {
-		this.longitude=longitude;
+		this.longitude = longitude;
 	}
 	
 	public String getLongitude() {
@@ -34,7 +34,7 @@ public class Location_stats {
 	}
 	
 	public void setCountry(String country) {
-		this.country=country;
+		this.country = country;
 	}
 	
 	public String getCountry() {
@@ -42,7 +42,7 @@ public class Location_stats {
 	}
 	
 	public void setCases(int cases) {
-		this.cases=cases;
+		this.cases = cases;
 	}
 	
 	public int getCases() {

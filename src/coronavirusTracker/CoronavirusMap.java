@@ -34,7 +34,7 @@ public class CoronavirusMap extends PApplet {
 	
 	public void setup() {
 		size((int)screenSize.getWidth(), (int)screenSize.getHeight(), OPENGL);
-		map = new UnfoldingMap(this, 150, 50, (int)screenSize.getWidth()-250, (int)screenSize.getHeight()-100, new Microsoft.RoadProvider());
+		map = new UnfoldingMap(this, 170, 50, (int)screenSize.getWidth()-250, (int)screenSize.getHeight()-170, new Microsoft.RoadProvider());
 		map.setBackgroundColor(255);
 	    map.zoomToLevel(3);
 	    MapUtils.createDefaultEventDispatcher(this, map);
@@ -65,7 +65,7 @@ public class CoronavirusMap extends PApplet {
 	    }
 	    map.addMarkers(countryMarkers);
 	    map.addMarkers(provinceMarkers);
-	    topCases=top5Cases();
+	    topCases = top5Cases();
 	}
 	
 	private SimplePointMarker createMarker(PointFeature feature)
@@ -87,7 +87,8 @@ public class CoronavirusMap extends PApplet {
 	{	
 		textSize(18);
 		fill(0,0,0);
-		text(Parse_feed.getDate(), (int)screenSize.getWidth()/2, 30);
+		//Shows data date
+		text("Currently showing "+Parse_feed.getDate()+" data", (int)screenSize.getWidth()/2-100, 30);
 		text("COVID-19 Tracker Map", 15, 30);
 		textSize(12);
 		fill(255, 0, 0, 63);
@@ -113,27 +114,27 @@ public class CoronavirusMap extends PApplet {
 	{
 		int arr[] = Parse_feed.getTopCases();
         int arrLength = arr.length; 
-        String [] topCasesTitles=Parse_feed.getTopCasesTitle();
-        int [] sortedPositions=new int [arrLength];
+        String [] topCasesTitles = Parse_feed.getTopCasesTitle();
+        int [] sortedPositions = new int [arrLength];
          
-        for(int j=0; j<arr.length; j++)
+        for(int j = 0; j < arr.length; j++)
         {
-        	sortedPositions[j]=mergeSort.getIndexInSortedArray(arr, arrLength, j); 
+        	sortedPositions[j] = mergeSort.getIndexInSortedArray(arr, arrLength, j); 
         }
         
-        mergeSort a= new mergeSort();
+        mergeSort a = new mergeSort();
         a.sort(arr);
 
-        String [] newTitle=new String [arrLength];
-        for(int i=0; i<arrLength; i++)
+        String [] newTitle = new String [arrLength];
+        for(int i = 0; i < arrLength; i++)
         {
-        	newTitle[sortedPositions[i]]=topCasesTitles[i];
+        	newTitle[sortedPositions[i]] = topCasesTitles[i];
         }
-        String [] top5=new String [5];
+        String [] top5 = new String [5];
         //gets top 5 most cases and their title
-        for(int i=arr.length-1; i>arr.length-6 ;i--)
+        for(int i = arr.length-1; i>arr.length-6 ;i--)
         {
-        	top5[arr.length-1-i]=newTitle[i]+": "+Integer.toString(arr[i]);
+        	top5[arr.length-1-i] = newTitle[i]+": "+Integer.toString(arr[i]);
         }
 		return top5;
 	}
@@ -154,7 +155,7 @@ public class CoronavirusMap extends PApplet {
 	{
 		for(Marker m: markers)
 		{
-			if(m.isInside(map, (float)mouseX, (float)mouseY)==true && lastSelected==null)
+			if(m.isInside(map, (float)mouseX, (float)mouseY) == true && lastSelected == null)
 			{
 				m.setSelected(true);
 				lastSelected = m;

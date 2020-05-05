@@ -30,22 +30,22 @@ public class Parse_feed {
 		
 		BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 	    String inputLine;
-	    String fullData="";
+	    String fullData = "";
 	    
 	    //Makes a copy of the data stored in fullData
 	    while ((inputLine = in.readLine()) != null) {
-	    	fullData=fullData+inputLine+"\n";
+	    	fullData = fullData+inputLine+"\n";
 	    }
 	    in.close();
 	    
 	    //Splits each line and stores each line as an element in dataLine
 	    String[] dataLine = fullData.split("\n"); 
 	    //Number of different areas included in the data set
-	    numberOfCountries=dataLine.length;
+	    numberOfCountries = dataLine.length;
 	    //Splits the first line (titles of the table) to get the latest date in the data set
 	    String[] firstLine = dataLine[0].split(",(?=\\S)");
 	    int latestDateIndex = firstLine.length-1;
-	    latestDate=firstLine[latestDateIndex];
+	    latestDate = firstLine[latestDateIndex];
 	    
 	    //Prints last line of the data set
 	    //System.out.println(dataLine[dataLine.length-1]);
@@ -57,9 +57,9 @@ public class Parse_feed {
 		//}    
 	    
 	    //Organizes province, country, latitude, longitude and cases into locationStat
-	    for(int i=1; i<dataLine.length;i++)
+	    for(int i = 1; i<dataLine.length; i++)
 		{
-			String[] split_data=dataLine[i].split(",(?=\\S)");
+			String[] split_data = dataLine[i].split(",(?=\\S)");
 			
 			Location_stats locationStat=new Location_stats();
 			locationStat.setProvince(split_data[0]);
@@ -76,33 +76,33 @@ public class Parse_feed {
 	public static List<PointFeature> locationFeatures() {
 		List<PointFeature> features = new ArrayList<PointFeature>();
 		PointFeature point;
-		topCases=new int[numberOfCountries];
-		topCasesTitles=new String[numberOfCountries];
-	    for(int i=0;i<numberOfCountries-1;i++)
+		topCases = new int[numberOfCountries];
+		topCasesTitles = new String[numberOfCountries];
+	    for(int i = 0; i<numberOfCountries-1; i++)
 	    {
-	    	Location coordinates=new Location(Float.parseFloat(locationList.get(i).getLatitude()), Float.parseFloat(locationList.get(i).getLongitude()));
+	    	Location coordinates = new Location(Float.parseFloat(locationList.get(i).getLatitude()), Float.parseFloat(locationList.get(i).getLongitude()));
 	    	
 			point = new PointFeature(coordinates);
 			features.add(point);
 			
-			int numOfCases=locationList.get(i).getCases();
-			topCases[i]=numOfCases;
+			int numOfCases = locationList.get(i).getCases();
+			topCases[i] = numOfCases;
 			point.putProperty("Confirmed Cases", numOfCases);
-			totalCases+=numOfCases;
+			totalCases += numOfCases;
 			
 			//is a country
 			if(locationList.get(i).getProvince().equals(""))
 			{
-				String locTitle=locationList.get(i).getCountry();
-				topCasesTitles[i]=locTitle;
+				String locTitle = locationList.get(i).getCountry();
+				topCasesTitles[i] = locTitle;
 				point.putProperty("Title", locTitle);
 				point.putProperty("isCountry", true);
 			}
 			//is a state/province
 			else
 			{
-				String locTitle=locationList.get(i).getProvince()+", "+locationList.get(i).getCountry();
-				topCasesTitles[i]=locTitle;
+				String locTitle = locationList.get(i).getProvince() + ", " + locationList.get(i).getCountry();
+				topCasesTitles[i] = locTitle;
 		    	point.putProperty("Title", locTitle);
 		    	point.putProperty("isCountry", false);
 			}

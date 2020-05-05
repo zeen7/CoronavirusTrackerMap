@@ -37,7 +37,7 @@ public class mergeSort {
     	int j = 0; //index for rightArray
     	int k = 0; //index for mergedArray
     	
-    	while(i<leftLength && j<rightLength)
+    	while(i < leftLength && j < rightLength)
     	{
     		if(leftArray[i] < rightArray[j])
     		{
@@ -52,13 +52,13 @@ public class mergeSort {
     		k++;
     	}
     	
-    	while(i<leftLength)
+    	while(i < leftLength)
     	{
     		mergedArray[k] = leftArray[i];
 			i++;
 			k++;
     	}
-    	while(j<rightLength)
+    	while(j < rightLength)
     	{
     		mergedArray[k] = rightArray[j];
 			j++;
@@ -69,20 +69,20 @@ public class mergeSort {
     {
     	int n = arr.length;
     	//base case
-    	if(n<2)
+    	if(n < 2)
     	{
     		return;
     	}
     	int mid = n/2;
     	int [] left = new int [mid];
     	int [] right = new int [n-mid];
-    	for(int i=0; i<mid ;i++)
+    	for(int i = 0; i < mid; i++)
     	{
-    		left[i]=arr[i];
+    		left[i] = arr[i];
     	}
-    	for(int i=mid; i<n; i++)
+    	for(int i = mid; i < n; i++)
     	{
-    		right[i-mid]=arr[i];
+    		right[i-mid] = arr[i];
     	}
     	sort(left);
     	sort(right);
@@ -100,25 +100,25 @@ public class mergeSort {
     	Parse_feed.locationFeatures();
         int arr[] = Parse_feed.getTopCases();
         int arrLength = arr.length; 
-        String [] topCasesTitles=Parse_feed.getTopCasesTitle();
-        int [] sortedPositions=new int [arrLength];
+        String [] topCasesTitles = Parse_feed.getTopCasesTitle();
+        int [] sortedPositions = new int [arrLength];
          
-        for(int j=0; j<arr.length; j++)
+        for(int j = 0; j < arr.length; j++)
         {
-        	sortedPositions[j]=getIndexInSortedArray(arr, arrLength, j); 
+        	sortedPositions[j] = getIndexInSortedArray(arr, arrLength, j); 
         }
         
-        mergeSort a= new mergeSort();
+        mergeSort a = new mergeSort();
         a.sort(arr);
 
-        String [] newTitle=new String [arrLength];
-        for(int i=0; i<arrLength; i++)
+        String [] newTitle = new String [arrLength];
+        for(int i = 0; i < arrLength; i++)
         {
-        	newTitle[sortedPositions[i]]=topCasesTitles[i];
+        	newTitle[sortedPositions[i]] = topCasesTitles[i];
         }
         
         //top 5 most cases
-        for(int i=arr.length-1; i>arr.length-6 ;i--)
+        for(int i = arr.length-1; i > arr.length-6; i--)
         {
         	System.out.println(newTitle[i]+", "+arr[i]);
         }
