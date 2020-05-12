@@ -1,5 +1,6 @@
 # Coronavirus Tracker Map
-[![](https://i.imgur.com/S89LlgG.jpg)]()
+![](https://i.imgur.com/S89LlgG.jpg)
+
 ## About
 An interactable map that shows the number of coronavirus cases currently around the world. This program uses the Processing and the UnfoldingMaps library and runs on Java version 8.
 
@@ -12,9 +13,9 @@ An interactable map that shows the number of coronavirus cases currently around 
 - Displays total global COVID-19 cases and top 5 places with the most cases
 
 ## Province/State Markers
-![alt text](https://i.imgur.com/1mBq61L.jpg)
+![](https://i.imgur.com/1mBq61L.jpg)
 ## Country Markers
-[![](https://i.imgur.com/0BqRnfu.jpg)]()
+![](https://i.imgur.com/0BqRnfu.jpg)
 
 ## Data Set Source
 - <a href="https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv" target="_blank">Global Confirmed COVID-19 Cases</a> 
