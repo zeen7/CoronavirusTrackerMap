@@ -23,4 +23,4 @@ An interactable map that shows the number of coronavirus cases currently around 
 ## Technologies Used
 - <a href="https://processing.org/" target="_blank">Processing</a> 
 - <a href="http://unfoldingmaps.org/" target="_blank">Unfolding Maps</a> 
-- <a href="https://java.com/en/download/manual.jsp" target="_blank">Java version 8</a> 
+- <a href="https://java.com/en/download/manual.jsp" target="_blank">Java Version 8</a> 
