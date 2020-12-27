@@ -49,14 +49,15 @@ public class Parse_feed {
 	    
 	    //Prints last line of the data set
 	    //System.out.println(dataLine[dataLine.length-1]);
+	    //System.out.println(dataLine.length);
 	    
 	    //Prints each line of the data
 	    //for(int i=0; i<dataLine.length;i++)
 		//{
-	    	//System.out.println(dataLine[i]);
+	    //	System.out.println(dataLine[i]);
 		//}    
 	    
-	    //Organizes province, country, latitude, longitude and cases into locationStat
+	    //Organizes province, country, latitude, longitude and cases into locationStat by splitting commas in each dataLine
 	    for(int i = 1; i<dataLine.length; i++)
 		{
 			String[] split_data = dataLine[i].split(",(?=\\S)");
@@ -70,6 +71,7 @@ public class Parse_feed {
 			
 			locationList.add(locationStat);
 		}
+	    
 	}
 	
 	//Adds properties for your each country to a list of PointFeatures so they can be added on the map as markers in CoronavirusMap
@@ -78,8 +80,16 @@ public class Parse_feed {
 		PointFeature point;
 		topCases = new int[numberOfCountries];
 		topCasesTitles = new String[numberOfCountries];
+		
 	    for(int i = 0; i<numberOfCountries-1; i++)
 	    {
+	    	//if latitude or longitude field is empty, do nothing
+	    	if(locationList.get(i).getLatitude().equals("") || locationList.get(i).getLongitude().equals(""))
+	    	{
+	    	}
+	    	//if latitude or longitude field is not empty, classifies as country or province/state and then adds it as a marker
+	    	else
+	    	{
 	    	Location coordinates = new Location(Float.parseFloat(locationList.get(i).getLatitude()), Float.parseFloat(locationList.get(i).getLongitude()));
 	    	
 			point = new PointFeature(coordinates);
@@ -106,6 +116,7 @@ public class Parse_feed {
 		    	point.putProperty("Title", locTitle);
 		    	point.putProperty("isCountry", false);
 			}
+	    	}
 	    }
 		return features;
 	}
