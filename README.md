@@ -1,5 +1,5 @@
 # Coronavirus Tracker Map
-![](https://i.imgur.com/S89LlgG.jpg)
+![](https://i.imgur.com/0BklQuh.jpeg)
 
 ## About
 An interactable map that shows the number of coronavirus cases currently around the world. This program uses the Processing and the UnfoldingMaps library and runs on Java version 8.
