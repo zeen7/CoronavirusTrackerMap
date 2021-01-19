@@ -2,7 +2,7 @@
 ![](https://i.imgur.com/0BklQuh.jpeg)
 
 ## About
-An interactable map that shows the number of coronavirus cases currently around the world. This program uses the Processing and the UnfoldingMaps library and runs on Java version 8.
+An interactable map that shows the number of coronavirus cases currently around the world. This program uses the Processing and the UnfoldingMaps library and runs on Java version 8. Source code is <a href="https://github.com/zeen7/CoronavirusTrackerMap/tree/master/src/coronavirusTracker" target="_blank">src folder</a>.
 
 ## Features
 - Updates with the latest number of coronavirus cases every day around world
