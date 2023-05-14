@@ -27,48 +27,39 @@ public class Parse_feed {
 		URL url = new URL("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv");
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
 		con.setRequestMethod("GET");
-		
+
 		BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-	    String inputLine;
-	    String fullData = "";
-	    
-	    //Makes a copy of the data stored in fullData
-	    while ((inputLine = in.readLine()) != null) {
-	    	fullData = fullData+inputLine+"\n";
-	    }
-	    in.close();
-	    
-	    //Splits each line and stores each line as an element in dataLine
-	    String[] dataLine = fullData.split("\n"); 
-	    //Number of different areas included in the data set
-	    numberOfCountries = dataLine.length;
-	    //Splits the first line (titles of the table) to get the latest date in the data set
-	    String[] firstLine = dataLine[0].split(",(?=\\S)");
-	    int latestDateIndex = firstLine.length-1;
-	    latestDate = firstLine[latestDateIndex];
-	    
-	    //Prints last line of the data set
-	    //System.out.println(dataLine[dataLine.length-1]);
-	    //System.out.println(dataLine.length);
-	    
-	    //Prints each line of the data
-	    //for(int i=0; i<dataLine.length;i++)
-		//{
-	    //	System.out.println(dataLine[i]);
-		//}    
-	    
-	    //Organizes province, country, latitude, longitude and cases into locationStat by splitting commas in each dataLine
-	    for(int i = 1; i<dataLine.length; i++)
+		String inputLine;
+		String fullData = "";
+
+		//Makes a copy of the data stored in fullData
+		while ((inputLine = in.readLine()) != null) {
+		fullData = fullData+inputLine+"\n";
+		}
+		in.close();
+
+		//Splits each line and stores each line as an element in dataLine
+		String[] dataLine = fullData.split("\n"); 
+		//Number of different areas included in the data set
+		numberOfCountries = dataLine.length;
+		//Splits the first line (titles of the table) to get the latest date in the data set
+		String[] firstLine = dataLine[0].split(",(?=\\S)");
+		int latestDateIndex = firstLine.length-1;
+		latestDate = firstLine[latestDateIndex];
+
+
+		//Organizes province, country, latitude, longitude and cases into locationStat by splitting commas in each dataLine
+		for(int i = 1; i<dataLine.length; i++)
 		{
 			String[] split_data = dataLine[i].split(",(?=\\S)");
-			
+
 			Location_stats locationStat=new Location_stats();
 			locationStat.setProvince(split_data[0]);
 			locationStat.setCountry(split_data[1]);
 			locationStat.setLatitude(split_data[2]);
 			locationStat.setLongitude(split_data[3]);
 			locationStat.setCases(Integer.parseInt(split_data[latestDateIndex]));
-			
+
 			locationList.add(locationStat);
 		}
 	    
